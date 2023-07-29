@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array of object</title>
+    <style>
+        body{
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <h3>"let studentRecords = [ {name: 'John', id: 123, marks : 98 },
+        {name: 'Baba', id: 101, marks : 23 },
+        {name: 'yaga', id: 200, marks : 45 },
+        {name: 'Wick', id: 115, marks : 75 } ] "</h3>
+    
+    <h3>Que.1: We are interested in retrieving only the students' names; all the names should be in caps :-
+        <pre> ['JOHN', 'BABA', 'YAGA', 'WICK']</pre>
+    </h3>
+    <h3>Ans:
+        <pre>
+        let studentRecords = [ {name: 'John', id: 123, marks : 98 },
+          {name: 'Baba', id: 101, marks : 23 },
+          {name: 'yaga', id: 200, marks : 45 },
+          {name: 'Wick', id: 115, marks : 75 } ] 
+          
+        let Name =studentRecords.map((item)=>item.name);
+        console.log(Name)
+        </pre>
+        Reason: Here we are using array.map() method and passing anonomous function having element i.e  item inside it
+        and extract key's value i.e. item.name then store in array and print using console.log
+    </h3> 
+    <h3>Que.2: Suppose we have the same dataset as above but this time we want to get the details of students who scored
+         more than 50 marks:-
+    <pre>  [{name: 'John', id: 123, marks: 98 },{name: 'Wick', id: 115, marks: 75 }]</pre>  
+    </h3>
+    <h3>Ans:
+        <pre>
+        let studentRecords = [ {name: 'John', id: 123, marks : 98 },
+          {name: 'Baba', id: 101, marks : 23 },
+          {name: 'yaga', id: 200, marks : 45 },
+          {name: 'Wick', id: 115, marks : 75 } ] 
+          
+
+        let minscore = studentRecords.map((check,i)=>{
+        
+        if(check.marks>50)
+        {
+            return (check)
+        }
+        }) ;
+        console.log(minscore)
+        </pre>
+        Reason: Here, marks is greater than 50 then print element.  
+    </h3> 
+    <h3>Que.3: Retrieve the details of students who scored more than 50 marks and have IDs greater than 120 ?</h3>
+    <h3>Ans:
+        <pre>
+            let studentRecords = [ {name: 'John', id: 123, marks : 98 },
+            {name: 'Baba', id: 101, marks : 23 },
+            {name: 'yaga', id: 200, marks : 45 },
+            {name: 'Wick', id: 115, marks : 75 } ] 
+            
+  
+          let minscore = studentRecords.map((check,i)=>{
+          
+          if(check.marks>50 && check.id>120)
+          {
+              return (check)
+          }
+          }) ;
+          minscore = minscore.filter((item)=>item!==undefined)
+          console.log(minscore)        
+        </pre>
+       Reason: Here check that marks is greater than 50 and id is greater than 120 then add in new array otherwise skip. 
+    </h3> 
+    <h3>Que.4: Consider the same scenario we have discussed above, but this time we would 
+        like to know the sum total of the marks of the students ?
+    </h3>
+    <h3>Ans:
+        <pre>
+            let studentRecords = [ {name: 'John', id: 123, marks : 98 },
+            {name: 'Baba', id: 101, marks : 23 },
+            {name: 'yaga', id: 200, marks : 45 },
+            {name: 'Wick', id: 115, marks : 75 } ] 
+            let sum = 0
+            let ans=studentRecords.map((item)=>sum+=item.marks)
+            console.log(sum)
+        </pre>
+       Reason: 
+    </h3>
+    <h3>Que.5: This time we want to get only the names of the students who scored more 
+        than 50 marks from the same dataset used above ?</h3>
+    <h3>Ans:
+        <pre>
+        let studentRecords = [ {name: 'John', id: 123, marks : 98 },
+            {name: 'Baba', id: 101, marks : 23 },
+            {name: 'yaga', id: 200, marks : 45 },
+            {name: 'Wick', id: 115, marks : 75 } ] 
+                               
+        let filter = studentRecords.filter((item)=>(item.marks>50 ? item:null))        
+        filter=filter.map((item)=>item.name)    
+        console.log(filter)
+        </pre>
+    Reason: Here check if marks is greater than 50 then print name of that student using filter method.     
+    </h3>
+    <h3>Que.6: This time we are required to print the sum of marks of the students with id > 120 ?</h3> 
+    <h3>Ans:
+        <pre>
+    let studentRecords = [ {name: 'John', id: 123, marks : 98 },
+    {name: 'Baba', id: 101, marks : 23 },
+    {name: 'yaga', id: 200, marks : 45 },
+    {name: 'Wick', id: 115, marks : 75 } ] 
+                                       
+    let getsum = 0;
+    studentRecords.filter((item)=>(item.id>120?item:null)).map((item)=>getsum+=item.marks)
+    console.log(getsum)
+        </pre>
+    Reason: Here check only if id is greater than 120 using filter method so add marks of that student in sum else skip using map method and print it.    
+    </h3>
+    <h3>Que.7: This time we are required to print the total marks of the students with marks 
+        greater than 50 after a grace of 15 marks has been added to those students
+         who scored less than 50 ?
+    </h3> 
+    <h3>Ans:
+        <pre>
+            let studentRecords = [ {name: 'John', id: 123, marks : 98 },
+            {name: 'Baba', id: 101, marks : 23 },
+            {name: 'yaga', id: 200, marks : 45 },
+            {name: 'Wick', id: 115, marks : 75 } ] 
+             let getsum=0
+ 
+            studentRecords.map((item)=>{
+            if(item.marks<50)
+        {
+             item.marks+=15;
+        }
+     return item
+    }).map((item)=>{if(item.marks>50)
+    {
+    getsum+=item.marks
+    }    
+ })
+ 
+ console.log(getsum)
+        </pre>
+    Reason:We are taking one variable and intilaize that var with 0.Then we are applying Map method on  given array of object and check if marks is
+    less than 50 then  increase by 15 and then again check for if marks greater than 50 then add in total sum else skip and return total sum. 
+
+    </h3>
+    <h3>Que.8:Create 6 objects , each object will have name, class, roll no as properties. Store these objects in an array of objects ?</h3>  
+    <h3>Ans: 
+    <pre>
+
+let studentDetails = [ {name: 'John', class: 12, roll_no : 98 },
+{name: 'Baba', class: 10, roll_no : 23 },
+{name: 'yaga', class: 8, roll_no : 45 },
+{name: 'Wick', class: 11, roll_no : 65 } ,
+{name: 'Era', class: 8, roll_no : 45 },
+{name: 'Mihir', class: 6, roll_no : 75 }] 
+
+for(let i=0 ;i < studentDetails.length;i++)
+{
+console.log(studentDetails[i]) //here print element of array
+}
+console.log(studentDetails) //print array of object
+</pre>
+Reason:Here we declaring array which is storing object as array element is known as "array of object" ,
+and then using for loop we are printing array element using for loop.
+</h3>
+</body>
+</html>
